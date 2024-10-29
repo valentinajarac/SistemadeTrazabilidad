@@ -21,15 +21,24 @@ public class ExportService {
     public byte[] exportToExcel(List<FruitShipmentResponseDTO> shipments) throws IOException {
         try (Workbook workbook = new XSSFWorkbook()) {
             Sheet sheet = workbook.createSheet("Remisiones");
-            
+
             // Create header row
             Row headerRow = sheet.createRow(0);
-            String[] columns = {"ID", "Productor", "Cliente", "Finca", "Cultivo", "Peso Promedio", 
-                              "Canastas Enviadas", "Total Kilos", "Fecha de Envío"};
-            
+            String[] columns = {"ID", "Productor", "Cliente", "Finca", "Cultivo", "Peso Promedio",
+                    "Canastas Enviadas", "Total Kilos", "Fecha de Envío"};
+
+            // Create cell style for headers
+            CellStyle headerStyle = workbook.createCellStyle();
+            headerStyle.setFillForegroundColor(IndexedColors.GREY_25_PERCENT.getIndex());
+            headerStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+            Font headerFont = workbook.createFont();
+            headerFont.setBold(true);
+            headerStyle.setFont(headerFont);
+
             for (int i = 0; i < columns.length; i++) {
-                Cell cell = headerRow.createCell(i);
+                org.apache.poi.ss.usermodel.Cell cell = headerRow.createCell(i);
                 cell.setCellValue(columns[i]);
+                cell.setCellStyle(headerStyle);
             }
 
             // Fill data rows
@@ -64,33 +73,35 @@ public class ExportService {
         PdfDocument pdf = new PdfDocument(writer);
         Document document = new Document(pdf);
 
-        document.add(new Paragraph("Reporte de Remisiones"));
-        document.add(new Paragraph(" ")); // Spacing
+        // Add title
+        Paragraph title = new Paragraph("Reporte de Remisiones")
+                .setFontSize(16)
+                .setBold();
+        document.add(title);
+        document.add(new Paragraph("\n")); // Add spacing
 
-        Table table = new Table(9);
-        
+        // Create table
+        Table table = new Table(9).useAllAvailableWidth();
+
         // Add headers
-        table.addCell("ID");
-        table.addCell("Productor");
-        table.addCell("Cliente");
-        table.addCell("Finca");
-        table.addCell("Cultivo");
-        table.addCell("Peso Promedio");
-        table.addCell("Canastas");
-        table.addCell("Total Kilos");
-        table.addCell("Fecha");
+        String[] headers = {"ID", "Productor", "Cliente", "Finca", "Cultivo",
+                "Peso Promedio", "Canastas", "Total Kilos", "Fecha"};
+
+        for (String header : headers) {
+            table.addCell(new Cell().add(new Paragraph(header)).setBold());
+        }
 
         // Add data
         for (FruitShipmentResponseDTO shipment : shipments) {
-            table.addCell(String.valueOf(shipment.getId()));
-            table.addCell(shipment.getProducer().getNombreCompleto());
-            table.addCell(shipment.getClient().getName());
-            table.addCell(shipment.getFarm().getName());
-            table.addCell(shipment.getCrop().getName());
-            table.addCell(String.valueOf(shipment.getAverageWeight()));
-            table.addCell(String.valueOf(shipment.getBasketsSent()));
-            table.addCell(String.valueOf(shipment.getTotalKilosSent()));
-            table.addCell(shipment.getShipmentDate().toString());
+            table.addCell(new Cell().add(new Paragraph(String.valueOf(shipment.getId()))));
+            table.addCell(new Cell().add(new Paragraph(shipment.getProducer().getNombreCompleto())));
+            table.addCell(new Cell().add(new Paragraph(shipment.getClient().getName())));
+            table.addCell(new Cell().add(new Paragraph(shipment.getFarm().getName())));
+            table.addCell(new Cell().add(new Paragraph(shipment.getCrop().getName())));
+            table.addCell(new Cell().add(new Paragraph(String.valueOf(shipment.getAverageWeight()))));
+            table.addCell(new Cell().add(new Paragraph(String.valueOf(shipment.getBasketsSent()))));
+            table.addCell(new Cell().add(new Paragraph(String.valueOf(shipment.getTotalKilosSent()))));
+            table.addCell(new Cell().add(new Paragraph(shipment.getShipmentDate().toString())));
         }
 
         document.add(table);
