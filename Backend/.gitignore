@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Compiled class file
 *.class
 
@@ -46,3 +47,13 @@ target/
 *.swo
 .env
 application-local.properties
+=======
+node_modules/
+.idea/workspace.xml
+.idea/tasks.xml
+.env
+*.log
+dist/
+coverage/
+.DS_Store
+>>>>>>> 4aaddd52 (Primer Commit)

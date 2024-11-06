@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "fruit-sales",
   "version": "1.0.0",
   "dependencies": {
@@ -7,5 +8,13 @@
     "express": "^4.18.2",
     "xlsx": "^0.18.5",
     "pdfkit": "^0.13.0"
+=======
+  "name": "fruit-traceability-backend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "java -jar target/fruit-traceability-1.0.0.jar",
+    "build": "mvn clean package"
+>>>>>>> 4aaddd52 (Primer Commit)
   }
 }

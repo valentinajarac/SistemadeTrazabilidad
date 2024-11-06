@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <project xmlns="http://maven.apache.org/POM/4.0.0" 
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     
+=======
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+>>>>>>> 4aaddd52 (Primer Commit)
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.1.5</version>
         <relativePath/>
     </parent>
+<<<<<<< HEAD
     
     <groupId>com.fruitsales</groupId>
     <artifactId>fruit-sales</artifactId>
@@ -25,6 +32,22 @@
         <jjwt.version>0.11.2</jjwt.version>
     </properties>
     
+=======
+
+    <groupId>com.traceability</groupId>
+    <artifactId>fruit-traceability</artifactId>
+    <version>1.0.0</version>
+    <name>fruit-traceability</name>
+    <description>Fruit Traceability System Backend</description>
+
+    <properties>
+        <java.version>17</java.version>
+        <jjwt.version>0.11.5</jjwt.version>
+        <apache.poi.version>5.2.3</apache.poi.version>
+        <itext.version>7.2.5</itext.version>
+    </properties>
+
+>>>>>>> 4aaddd52 (Primer Commit)
     <dependencies>
         <!-- Spring Boot Starters -->
         <dependency>
@@ -43,8 +66,25 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
+<<<<<<< HEAD
         
         <!-- JWT Dependencies -->
+=======
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- PostgreSQL -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- JWT -->
+>>>>>>> 4aaddd52 (Primer Commit)
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-api</artifactId>
@@ -62,6 +102,7 @@
             <version>${jjwt.version}</version>
             <scope>runtime</scope>
         </dependency>
+<<<<<<< HEAD
         
         <!-- Export Dependencies -->
         <dependency>
@@ -73,10 +114,19 @@
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>5.2.3</version>
+=======
+
+        <!-- Excel and PDF -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${apache.poi.version}</version>
+>>>>>>> 4aaddd52 (Primer Commit)
         </dependency>
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>itext7-core</artifactId>
+<<<<<<< HEAD
             <version>7.2.5</version>
             <type>pom</type>
         </dependency>
@@ -88,14 +138,25 @@
             <scope>runtime</scope>
         </dependency>
         
+=======
+            <version>${itext.version}</version>
+            <type>pom</type>
+        </dependency>
+
+>>>>>>> 4aaddd52 (Primer Commit)
         <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+<<<<<<< HEAD
         
         <!-- Test Dependencies -->
+=======
+
+        <!-- Test -->
+>>>>>>> 4aaddd52 (Primer Commit)
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -107,7 +168,11 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 4aaddd52 (Primer Commit)
     <build>
         <plugins>
             <plugin>
@@ -122,6 +187,7 @@
                     </excludes>
                 </configuration>
             </plugin>
+<<<<<<< HEAD
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -134,6 +200,8 @@
                     </compilerArgs>
                 </configuration>
             </plugin>
+=======
+>>>>>>> 4aaddd52 (Primer Commit)
         </plugins>
     </build>
 </project>
